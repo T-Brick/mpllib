@@ -215,7 +215,7 @@ struct
 
       fun child c =
           FileDesc
-          (case !c of 
+          (case !c of
               Child.FileDesc f => (c := Child.Stream ((), fn () => ()); f)
             | Child.Stream _ => raise DoublyRedirected
             | Child.Term  => raise MisuseOfForget)
@@ -227,7 +227,7 @@ struct
 
       local
           fun openOut std p =
-            case p of 
+            case p of
                 File s => (FileSys.creat (s, readWrite), Child.Term)
               | FileDesc f => (f, Child.Term)
               | Pipe =>
